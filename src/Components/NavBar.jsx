@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const NavBar = () => {
 
@@ -37,8 +38,9 @@ const link = <> <li>Home</li>
     </ul>
   </div>
   <div className="navbar-end">
-    <button className='px-6 py-1 rounded-[5px] bg-[#388E3C] text-white font-semibold mr-2'>Log In</button>
-    <button className='px-5 py-1 rounded-[5px] border-2 text-black font-semibold'>Register</button>
+    <Link to="/login"><button className='px-6 py-1 rounded-[5px] bg-[#388E3C] text-white font-semibold mr-2'>Log In</button></Link>
+
+    <Link to="/register"><button className='px-5 py-1 rounded-[5px] border-2 text-black font-semibold'>Register</button></Link>
   </div>
 </div>
 
