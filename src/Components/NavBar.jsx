@@ -17,7 +17,7 @@ const link = <> <li>Home</li>
     return (
         <div>
 
-         <div className="navbar bg-base-100 shadow-sm">
+         <div className="navbar bg-white text-black shadow-sm px-4">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -29,7 +29,7 @@ const link = <> <li>Home</li>
         {link}
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl">daisyUI</a>
+    <img className='w-[100px] lg:w-[140px]' src='/logo.png'></img>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
@@ -37,8 +37,8 @@ const link = <> <li>Home</li>
     </ul>
   </div>
   <div className="navbar-end">
-    <button className=''>Log In</button>
-    <button>Register</button>
+    <button className='px-6 py-1 rounded-[5px] bg-[#388E3C] text-white font-semibold mr-2'>Log In</button>
+    <button className='px-5 py-1 rounded-[5px] border-2 text-black font-semibold'>Register</button>
   </div>
 </div>
 
