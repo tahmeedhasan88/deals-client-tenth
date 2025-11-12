@@ -4,12 +4,12 @@ import { Link } from 'react-router';
 
 const NavBar = () => {
 
-const link = <>     <NavLink to="/"><li>Home</li></NavLink>
+const link = <>     <NavLink to="/"><li className='text-[12px] lg:text-[15px] font-semibold'>Home</li></NavLink>
  
-              <NavLink to="/pet&supply"><li className='ml-4'>Pet & Supplies</li></NavLink>
-              <NavLink to="/addlisting"><li className='ml-4'>Add Listing</li></NavLink>
-              <NavLink to="/mylistings"><li className='ml-4'>My Listings</li></NavLink>
-              <NavLink to="/myorders"><li className='ml-4'>My Orders</li></NavLink>
+              <NavLink to="/pet&supply"><li className='ml-4 text-[12px] lg:text-[15px] font-semibold'>Pet & Supplies</li></NavLink>
+              <NavLink to="/addlisting"><li className='ml-4 text-[12px] lg:text-[15px] font-semibold'>Add Listing</li></NavLink>
+              <NavLink to="/mylistings"><li className='ml-4 text-[12px] lg:text-[15px] font-semibold'>My Listings</li></NavLink>
+              <NavLink to="/myorders"><li className='ml-4 text-[12px] lg:text-[15px] font-semibold'>My Orders</li></NavLink>
 
 
 </>
@@ -35,6 +35,7 @@ const link = <>     <NavLink to="/"><li>Home</li></NavLink>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
+
       {link}
     </ul>
   </div>
