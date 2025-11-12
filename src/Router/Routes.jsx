@@ -3,6 +3,10 @@ import Home from "../Pages/Home";
 import Roots from "../Roots/Roots";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import PetSupply from "../Pages/PetSupply";
+import AddListing from "../Pages/AddListing";
+import MyListings from "../Pages/MyListings";
+import MyOrders from "../Pages/MyOrders";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +27,26 @@ export const router = createBrowserRouter([
         {
          path:"/register",
          element: <Register></Register>
+
+        },
+        {
+         path:"/pet&supply",
+         element: <PetSupply></PetSupply>
+
+        },
+        {
+         path:"/addlisting",
+         element: <AddListing></AddListing>
+
+        },
+        {
+         path:"/mylistings",
+         element: <MyListings></MyListings>
+
+        },
+        {
+         path:"/myorders",
+         element: <MyOrders></MyOrders>
 
         },
 

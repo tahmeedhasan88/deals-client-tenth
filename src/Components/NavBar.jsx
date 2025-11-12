@@ -1,14 +1,15 @@
 import React from 'react';
+import { NavLink } from 'react-router';
 import { Link } from 'react-router';
 
 const NavBar = () => {
 
-const link = <> <li>Home</li>
+const link = <>     <NavLink to="/"><li>Home</li></NavLink>
  
-              <li className='ml-4'>Pet & Supplies</li>
-              <li className='ml-4'>Add Listing</li>
-              <li className='ml-4'>My Listings</li>
-              <li className='ml-4'>My Orders</li>
+              <NavLink to="/pet&supply"><li className='ml-4'>Pet & Supplies</li></NavLink>
+              <NavLink to="/addlisting"><li className='ml-4'>Add Listing</li></NavLink>
+              <NavLink to="/mylistings"><li className='ml-4'>My Listings</li></NavLink>
+              <NavLink to="/myorders"><li className='ml-4'>My Orders</li></NavLink>
 
 
 </>
