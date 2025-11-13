@@ -1,3 +1,4 @@
+import { toast, ToastContainer } from "react-toastify";
 
 
 const AddListing = () => {
@@ -39,6 +40,7 @@ fetch('http://localhost:3000/products',{
 .then(res => res.json())
   .then(data => {
     console.log('Product added successfully:', data);
+    toast.success("Product added successfully!");
   })
   .catch(error => {
     console.error('Error adding product:', error);
@@ -132,7 +134,7 @@ fetch('http://localhost:3000/products',{
 </form>
 
 
-
+<ToastContainer position="top-center" autoClose={3000} />
 
 
         </div>

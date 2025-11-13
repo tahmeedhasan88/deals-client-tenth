@@ -37,6 +37,7 @@ const handleOrderSubmit = (e) =>{
     e.preventDefault();
   const form = e.target;
   const productName = form.productName.value;
+  const email = form.email.value;
   const name = form.name.value;
   const price = form.price.value;
   const quantity= form.quantity.value;
@@ -191,6 +192,15 @@ fetch('http://localhost:3000/orders',{
     readOnly 
     defaultValue={user.displayName} 
   />
+<label className="block text-sm font-medium">Name</label>
+  <input 
+    type="text" 
+    name='email'
+    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500" 
+    readOnly 
+    defaultValue={user.email} 
+  />
+
 
   <label className="block text-sm font-medium">Price</label>
   <input 
