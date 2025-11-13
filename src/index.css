@@ -1,6 +1,7 @@
 @import "tailwindcss";
-@plugin "daisyui";
-
+@plugin "daisyui" {
+  themes: light --default;
+ }
 a.active {
   color: #388E3C;
 }
@@ -10,3 +11,6 @@ a.pending {
 a.transitioning {
   view-transition-name: my-transition;
 }
+
+
+
