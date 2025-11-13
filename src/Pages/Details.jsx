@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useEffect } from 'react';
+import { use } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router';
 import { useParams } from 'react-router';
 
 import { useLoaderData } from 'react-router';
+import { AuthContext } from '../Context/AuthContext';
 
 const Details = () => {
 
+const {user} = use(AuthContext);
  const data = useLoaderData();
  const {id} = useParams();
 const [pet, setPet] = useState({})
+
+
+const orderModalRef = useRef(null);
 
 //  console.log(data, id, pet)
 
@@ -19,6 +25,25 @@ const petDetails = data.find((singleDetails)=>singleDetails._id == id)
 setPet(petDetails)
 
 },[data, id])
+
+
+const handleOrderModal =()=>{
+orderModalRef.current.showModal();
+}
+
+const handleOrderSubmit = (e) =>{
+    e.preventDefault();
+  const form = e.target;
+  const productName = form.productName;
+  const name = form.name;
+  const price = form.price;
+  const quantity= form.quantity;
+  const address = form.address;
+  const date = form.date;
+  const phone = form.number;
+
+
+}
 
 
     return (
@@ -84,8 +109,8 @@ setPet(petDetails)
             </p>
           </div>
 
-          <button className="w-full bg-gradient-to-r from-green-600 to-[#388E3C] text-white py-3 rounded-lg font-semibold hover:opacity-90 transition">
-  I Want Buy This Product
+          <button onClick={handleOrderModal} className="w-full bg-gradient-to-r from-green-600 to-[#388E3C] text-white py-3 rounded-lg font-semibold hover:opacity-90 transition">
+  I Want To Buy It
            </button>
 
         </div>
@@ -102,6 +127,90 @@ setPet(petDetails)
     </div>
 
 
+
+{/* Modal---------- */}
+{/* Open the modal using document.getElementById('ID').showModal() method */}
+<dialog ref={orderModalRef} className="modal modal-bottom sm:modal-middle">
+  <div className="modal-box">
+    <h3 className="font-bold text-lg">Order Now</h3>
+    <p className="py-4">Give Your Order Details</p>
+
+<form onSubmit={handleOrderSubmit} >
+
+    <fieldset className="space-y-3 w-full max-w-sm mx-auto">
+  <label className="block text-sm font-medium">Listing Name</label>
+  <input 
+    type="text" 
+    name='productName'
+    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500" 
+    readOnly 
+    defaultValue={pet.name} 
+  />
+
+  <label className="block text-sm font-medium">Name</label>
+  <input 
+    type="text" 
+    name='name'
+    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500" 
+    readOnly 
+    defaultValue={user.displayName} 
+  />
+
+  <label className="block text-sm font-medium">Price</label>
+  <input 
+    type="number" 
+    name='price'
+    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500" 
+    placeholder="Price of Product" 
+  />
+
+  <label className="block text-sm font-medium">Quantity</label>
+  <input 
+    type="number" 
+    name='quantity'
+    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500" 
+    placeholder="Quantity of Product" 
+  />
+
+  <label className="block text-sm font-medium">Your Address</label>
+  <input 
+    type="text" 
+    name='address'
+    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500" 
+    placeholder="Present Address" 
+  />
+ <label className="block text-sm font-medium">Date</label>
+  <input 
+    type="number" 
+    name='date'
+    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500" 
+    placeholder="Order Date" 
+  />
+
+  <label className="block text-sm font-medium">Phone Number</label>
+  <input 
+    type="number" 
+    name='number'
+    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500" 
+    placeholder="Your Phone Number" 
+  />
+
+  <button className="w-full bg-[#388E3C] text-white py-2 rounded-lg font-semibold hover:opacity-90 transition">
+    Order Submit
+  </button>
+</fieldset>
+
+
+</form>
+    
+    <div className="modal-action">
+      <form method="dialog">
+        {/* if there is a button in form, it will close the modal */}
+        <button className="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
 
 
 
