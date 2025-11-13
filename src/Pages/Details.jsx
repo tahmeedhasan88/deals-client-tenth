@@ -14,6 +14,7 @@ const {user} = use(AuthContext);
  const data = useLoaderData();
  const {id} = useParams();
 const [pet, setPet] = useState({})
+const {_id, email} = pet;
 
 
 const orderModalRef = useRef(null);
@@ -34,14 +35,41 @@ orderModalRef.current.showModal();
 const handleOrderSubmit = (e) =>{
     e.preventDefault();
   const form = e.target;
-  const productName = form.productName;
-  const name = form.name;
-  const price = form.price;
-  const quantity= form.quantity;
-  const address = form.address;
-  const date = form.date;
-  const phone = form.number;
+  const productName = form.productName.value;
+  const name = form.name.value;
+  const price = form.price.value;
+  const quantity= form.quantity.value;
+  const address = form.address.value;
+  const date = form.date.value;
+  const phone = form.number.value;
+  const note = form.opinion.value;
+console.log(_id, productName, name, price, quantity, address,date, phone)
 
+const newOrders = {
+  productId: _id,
+  productName: productName,
+  buyerName: name,
+  email: email,
+  quantity: quantity,
+  price: price,
+  address: address,
+  phone: phone,
+  date: date,
+  additionalNotes: note,
+}
+fetch('http://localhost:3000/orders',{
+    method:'POST',
+    headers:{
+        'content-type':'application/json'
+    },
+    body: JSON.stringify(newOrders)
+})
+.then(res=>res.json())
+.then(data=>{
+    if(data.insertedId){
+        orderModalRef.current.close();
+    }
+})
 
 }
 
@@ -161,7 +189,7 @@ const handleOrderSubmit = (e) =>{
     type="number" 
     name='price'
     className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500" 
-    placeholder="Price of Product" 
+    defaultValue={pet.price}
   />
 
   <label className="block text-sm font-medium">Quantity</label>
@@ -181,7 +209,7 @@ const handleOrderSubmit = (e) =>{
   />
  <label className="block text-sm font-medium">Date</label>
   <input 
-    type="number" 
+    type="date" 
     name='date'
     className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500" 
     placeholder="Order Date" 
@@ -193,6 +221,13 @@ const handleOrderSubmit = (e) =>{
     name='number'
     className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500" 
     placeholder="Your Phone Number" 
+  />
+  <label className="block text-sm font-medium">Note</label>
+  <input 
+    type="text" 
+    name='opinion'
+    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500" 
+    placeholder="You CanWrite Something" 
   />
 
   <button className="w-full bg-[#388E3C] text-white py-2 rounded-lg font-semibold hover:opacity-90 transition">
@@ -206,7 +241,7 @@ const handleOrderSubmit = (e) =>{
     <div className="modal-action">
       <form method="dialog">
         {/* if there is a button in form, it will close the modal */}
-        <button className="btn">Close</button>
+        
       </form>
     </div>
   </div>
