@@ -7,6 +7,7 @@ import { useParams } from 'react-router';
 
 import { useLoaderData } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
+import Swal from 'sweetalert2';
 
 const Details = () => {
 
@@ -68,6 +69,13 @@ fetch('http://localhost:3000/orders',{
 .then(data=>{
     if(data.insertedId){
         orderModalRef.current.close();
+        Swal.fire({
+  position: "top-end",
+  icon: "success",
+  title: "Your order has been placed",
+  showConfirmButton: false,
+  timer: 1500
+});
     }
 })
 
