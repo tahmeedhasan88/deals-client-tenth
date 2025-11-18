@@ -59,7 +59,7 @@ const newOrders = {
   date: date,
   additionalNotes: note,
 }
-fetch('http://localhost:3000/orders',{
+fetch('https://deals-server-tenth.vercel.app/orders',{
     method:'POST',
     headers:{
         'content-type':'application/json'

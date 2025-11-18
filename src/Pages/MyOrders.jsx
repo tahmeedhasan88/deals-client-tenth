@@ -11,7 +11,7 @@ const MyOrders = () => {
 
   useEffect(() => {
     if(user?.email){
-      fetch(`http://localhost:3000/orders?email=${user.email}`)
+      fetch(`https://deals-server-tenth.vercel.app/orders?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => setOrders(data));
     }
@@ -19,7 +19,7 @@ const MyOrders = () => {
 
   // Delete order
   const handleDelete = (id) => {
-  fetch(`http://localhost:3000/orders/${id}`, {
+  fetch(`https://deals-server-tenth.vercel.app/orders/${id}`, {
     method: "DELETE",
   })
     .then((res) => res.json())

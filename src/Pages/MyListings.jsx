@@ -10,7 +10,7 @@ const MyListings = () => {
   // Fetch user's listings
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:3000/products?email=${user.email}`)
+      fetch(`https://deals-server-tenth.vercel.app/products?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => setProducts(data))
         .catch((err) => console.error(err));
@@ -29,7 +29,7 @@ const MyListings = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/products/${id}`, {
+        fetch(`https://deals-server-tenth.vercel.app/products/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -59,29 +59,31 @@ const MyListings = () => {
         {products.map((p) => (
           <div
             key={p._id}
-            className="border rounded-lg shadow-md overflow-hidden relative"
+            className=" rounded-lg shadow-2xl overflow-hidden relative"
           >
             <img
               src={p.image}
               alt={p.name}
               className="w-full h-48 object-cover"
             />
-            <div className="p-4">
-              <h2 className="text-lg font-bold">{p.name}</h2>
-              <p className="text-sm text-gray-600">Category: {p.category}</p>
+            <div className="p-4 relative">
+              {/* Name + Delete button flex container */}
+              <div className="flex justify-between items-start">
+                <h2 className="text-lg font-bold">{p.name}</h2>
+                <button
+                  onClick={() => handleDelete(p._id)}
+                  className="text-red-600 hover:text-red-800"
+                  title="Delete Listing"
+                >
+                  <FaTrash size={18} />
+                </button>
+              </div>
+              <p className="text-sm text-gray-600 mt-1">Category: {p.category}</p>
               <p className="text-sm text-gray-600">Price: ${p.price}</p>
               <p className="text-sm text-gray-600">Location: {p.location}</p>
               <p className="text-sm mt-2">{p.description}</p>
               <p className="text-xs text-gray-400 mt-1">Date: {p.date}</p>
             </div>
-
-            <button
-              onClick={() => handleDelete(p._id)}
-              className="absolute top-2 right-2 text-red-600 hover:text-red-800"
-              title="Delete Listing"
-            >
-              <FaTrash size={20} />
-            </button>
           </div>
         ))}
       </div>

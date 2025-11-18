@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import RecentListing from '../Components/RecentListing';
 import { Suspense } from 'react';
 
-const recentListingPromise = fetch('http://localhost:3000/recent-listings').then(res=>res.json())
+const recentListingPromise = fetch('https://deals-server-tenth.vercel.app/recent-listings').then(res=>res.json())
 
 
 const Home = () => {

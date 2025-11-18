@@ -41,7 +41,7 @@ export const router = createBrowserRouter([
         {
          path:"/addlisting",
          element: <AddListing></AddListing>,
-         loader: ()=> fetch("http://localhost:3000/products")
+         loader: ()=> fetch("https://deals-server-tenth.vercel.app/products")
 
         },
         {
@@ -57,7 +57,7 @@ export const router = createBrowserRouter([
         {
          path:"/details/:id",
          element: <PrivateRoute><Details></Details></PrivateRoute>,
-         loader: ()=> fetch("http://localhost:3000/products")
+         loader: ()=> fetch("https://deals-server-tenth.vercel.app/products")
 
         },
 

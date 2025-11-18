@@ -30,7 +30,7 @@ const newProducts = {
   date: date,
   
 }
-fetch('http://localhost:3000/products',{
+fetch('https://deals-server-tenth.vercel.app/products',{
     method:'POST',
     headers:{
         'content-type':'application/json'

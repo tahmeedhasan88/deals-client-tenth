@@ -45,7 +45,7 @@ createUser(email, password)
 
         }
         
-        fetch('http://localhost:3000/users',{
+        fetch('https://deals-server-tenth.vercel.app/users',{
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

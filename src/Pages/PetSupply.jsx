@@ -2,7 +2,7 @@ import React from 'react';
 import AllListings from '../Components/AllListings';
 import { Suspense } from 'react';
 
-const allListingApi = fetch('http://localhost:3000/products').then(res=>res.json())
+const allListingApi = fetch('https://deals-server-tenth.vercel.app/products').then(res=>res.json())
 
 
 const PetSupply = () => {
