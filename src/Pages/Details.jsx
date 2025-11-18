@@ -4,7 +4,6 @@ import { use } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router';
 import { useParams } from 'react-router';
-
 import { useLoaderData } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
 import Swal from 'sweetalert2';
@@ -88,7 +87,7 @@ fetch('https://deals-server-tenth.vercel.app/orders',{
             
 
 <div className="max-w-5xl mx-auto px-6 py-8 bg-white rounded-2xl shadow-md">
-      {/* Back link */}
+     
       <Link
         to="/"
         className="text-sm text-[#388E3C] font-semibold hover:underline flex items-center mb-4"
@@ -147,7 +146,7 @@ fetch('https://deals-server-tenth.vercel.app/orders',{
           </div>
 
           <button onClick={handleOrderModal} className="w-full bg-gradient-to-r from-green-600 to-[#388E3C] text-white py-3 rounded-lg font-semibold hover:opacity-90 transition">
-  I Want To Buy It
+             I Want To Buy It
            </button>
 
         </div>
@@ -258,7 +257,6 @@ fetch('https://deals-server-tenth.vercel.app/orders',{
     
     <div className="modal-action">
       <form method="dialog">
-        {/* if there is a button in form, it will close the modal */}
         
       </form>
     </div>
