@@ -29,7 +29,7 @@ setPet(petDetails)
 
 
 const handleOrderModal =()=>{
-orderModalRef.current.showModal();
+orderModalRef.current?.showModal();
 }
 
 const handleOrderSubmit = (e) =>{
