@@ -55,7 +55,7 @@ fetch('http://localhost:3000/products',{
             
 
 <form onSubmit={handleListingSubmit}>
-    <fieldset className="space-y-3 w-full max-w-sm mx-auto bg-white p-4 my-10">
+    <fieldset className="space-y-3 w-full max-w-sm mx-auto bg-white p-10 my-10 rounded-[10px]">
   <label className="block text-sm font-medium">Listing Name</label>
   <input 
     type="text" 

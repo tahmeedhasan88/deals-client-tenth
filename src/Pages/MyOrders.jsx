@@ -1,25 +1,38 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import jsPDF from "jspdf";
+import Swal from "sweetalert2";
+import { AuthContext } from "../Context/AuthContext";
+
 
 const MyOrders = () => {
+
+  const {user} = use(AuthContext)
   const [orders, setOrders] = useState([]);
 
-  // Fetch orders
   useEffect(() => {
-    fetch("http://localhost:5000/orders?email=tahmeedhasan2@gmail.com")
+    if(user?.email){
+      fetch(`http://localhost:3000/orders?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => setOrders(data));
-  }, []);
+    }
+  }, [user?.email]);
 
   // Delete order
   const handleDelete = (id) => {
-  fetch(`http://localhost:5000/orders/${id}`, {
+  fetch(`http://localhost:3000/orders/${id}`, {
     method: "DELETE",
   })
     .then((res) => res.json())
     .then(() => {
-      // Remove deleted order from state
+     
       setOrders(orders.filter((order) => order._id !== id));
+      Swal.fire({
+  position: "top-end",
+  icon: "success",
+  title: "Your order has been removed",
+  showConfirmButton: false,
+  timer: 1500
+});
     });
 };
 
@@ -71,13 +84,13 @@ const MyOrders = () => {
               <td className="p-2 border flex justify-center gap-2">
             <button
             onClick={() => handleDelete(order._id)}
-            className="bg-red-500 bg-opacity-50 text-red-800 px-2 py-1 rounded"
+            className="bg-red-500 bg-opacity-50 text-white font-semibold px-2 py-1 rounded"
             >
             Remove
             </button>
                 <button
                   onClick={() => handlePDF(order)}
-                  className="bg-green-500 text-white px-2 py-1 rounded"
+                  className="bg-green-500 text-white font-semibold px-2 py-1 rounded"
                 >
                   PDF
                 </button>
