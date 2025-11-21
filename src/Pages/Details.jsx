@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../Context/AuthContext";
 import Swal from "sweetalert2";
 import { useLoaderData } from "react-router";
@@ -11,7 +11,7 @@ const Details = () => {
   const { id } = useParams();
 
   const [pet, setPet] = useState({});
-  const { _id = "", email = "" } = pet || {};
+  const { _id, email} = pet;
 
   const orderModalRef = useRef(null);
 

@@ -5,7 +5,7 @@ const Footer = () => {
         <div>
            <footer className="footer footer-horizontal footer-center bg-[#388E3C] text-primary-content p-10">
   <aside>
-    <img className='w-[100px] lg:w-[140px]' src='/public/whiteLogo.png'></img>
+    <img className='w-[100px] lg:w-[140px]' src='/whiteLogo.png'></img>
     <p className="font-bold">
       Paw Mart
       <br />
